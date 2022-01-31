@@ -1,0 +1,26 @@
+
+<?php
+    $meteoPlace = new \App\Classes\MeteoPlace('/' . $_GET['place']);
+?>
+
+<div class="card map" style="width: 100%;">
+    <div class="card-body">
+        <h5 class="card-title"><?php echo $meteoPlace->getName(); ?></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Region: <?php echo $meteoPlace->getAdministrativeDivision(); ?></h6>
+        <p class="card-text">Take a look at  <?php echo $meteoPlace->getName(); ?> forecasts. All data have been taken from <a href="https://api.meteo.lt/" class="card-link">https://api.meteo.lt/</a>.</p>
+        <iframe src="https://maps.google.com/maps?q=<?php echo $meteoPlace->getCoordinates()->latitude; ?>,<?php echo $meteoPlace->getCoordinates()->longitude; ?>&hl=en&z=6&amp;output=embed" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
+            <input type="hidden" id="custId" name="placeName" value="<?php echo $meteoPlace->getName(); ?>">
+            <input type="hidden" id="custId" name="placeCode" value="<?php echo $meteoPlace->getCode(); ?>">
+            <input type="hidden" id="custId" name="placeLatitude" value="<?php echo $meteoPlace->getCoordinates()->latitude; ?>">
+            <input type="hidden" id="custId" name="placeLongitude" value="<?php echo $meteoPlace->getCoordinates()->longitude; ?>">
+            <input type="hidden" id="custId" name="placeCountry" value="<?php echo $meteoPlace->getAdministrativeDivision(); ?>">
+            <div class="col-12">
+                <div class="row">
+                    <button type="submit" class="btn btn-secondary btn-lg btn-block">Look all the prognosis</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

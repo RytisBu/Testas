@@ -1,0 +1,13 @@
+{
+    "name": "trva/2022-01-06",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "slim/slim": "^4.9",
+        "swagger-api/swagger-ui": "^4.1",
+        "symfony/routing": "^5.4"
+    }
+}

@@ -1,0 +1,22 @@
+<div class="place-select">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" METHOD="GET">
+        <div class="row">
+            <select name="place" class="form-select" aria-label="Select wanted place to check forecasts">
+                <option selected>Select place</option>
+                <?php
+                    $main = new main();
+
+                    foreach($main->getPlaces() as $place) {
+                        echo '<option value="' . $place->code . '">' . $place->name . '</option>';
+                    }
+                ?>
+            </select>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <button type="submit" class="btn btn-secondary btn-lg btn-block">Check forecasts</button>
+            </div>
+        </div>
+    </form>
+</div>
+
